@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +10,14 @@ namespace ACM.BL
 {
     public class Customer
     {
+        public Customer()
+        {
+
+        }
+        public Customer(int customerId)
+        {
+            CustomerId = CustomerId;
+        }
         public int CustomerId { get; private set; }
         // FirstName is the property. When you just want to set and get the value to a backing field, use this shortcut way to assign and get the values.
         public string FirstName { get; set; }
@@ -41,6 +51,21 @@ namespace ACM.BL
 
                 return FullName;
             }
+        }
+        public Customer Retrieve(int customerId)
+        {
+            return new Customer();
+        }
+        public List<Customer> Retrieve()
+        {
+            return new List<Customer>();
+        }
+        public bool Validate()
+        {
+            var isValid = true;
+            if (String.IsNullOrWhiteSpace(LastName)) isValid = false;
+            if (String.IsNullOrWhiteSpace(EmailAddress)) isValid = false;
+            return isValid;
         }
 
 
