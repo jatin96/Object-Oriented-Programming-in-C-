@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    class Product
+    public class Product
     {
         public Product()
         {
